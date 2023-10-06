@@ -1,0 +1,146 @@
+{
+  "uuid": "835fe059-b67d-4849-8490-0b18354a9335",
+  "lastMigration": 28,
+  "name": "FestivanowAPIMOCK",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "b9eb0651-b901-49eb-adfc-f33447683a40",
+      "type": "http",
+      "documentation": "This route is for FestivaNow Permission Generation",
+      "method": "post",
+      "endpoint": "permission",
+      "responses": [
+        {
+          "uuid": "417df733-7a40-4c20-a37d-440e37a4dd80",
+          "body": "{\n  \"Permission\": {\n    \"id\": {{faker \"datatype.uuid\"}},\n    \"event_id\": {{body \"event_id\"}},\n    \"signed_by\": {{faker \"name.fullName\"}},\n    \"until\": {{faker \"date.soon\" 30}},\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Normal response",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "event_id",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        },
+        {
+          "uuid": "bacbe653-6c98-458e-a711-c8f1a6454be4",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "No event Id defaults to 100",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "event_id",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "eaecfc8b-bb06-4790-bd38-0edf6f6679b6",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "provider",
+      "responses": [
+        {
+          "uuid": "1af89472-8ffb-4d08-96a2-a24477d4a842",
+          "body": "{\n  \"Provider\":{\n    \"id\": {{faker \"datatype.uuid\"}},\n    \"name\": {{faker \"company.name\"}},\n    \"test\": {{env \"USER\"}}\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "b9eb0651-b901-49eb-adfc-f33447683a40"
+    },
+    {
+      "type": "route",
+      "uuid": "eaecfc8b-bb06-4790-bd38-0edf6f6679b6"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

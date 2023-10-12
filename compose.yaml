@@ -2,6 +2,7 @@ version: '3'
 services:
   mockoon:
     image: mockoon/cli:latest
+    restart: always
     ports:
       - "3000:3000"
     volumes:

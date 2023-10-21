@@ -13,11 +13,11 @@
       "type": "http",
       "documentation": "This route is for FestivaNow Permission Generation",
       "method": "post",
-      "endpoint": "permission",
+      "endpoint": "license",
       "responses": [
         {
           "uuid": "417df733-7a40-4c20-a37d-440e37a4dd80",
-          "body": "{\n  \"Permission\": {\n    \"id\": {{faker \"datatype.uuid\"}},\n    \"event_id\": {{body \"event_id\"}},\n    \"signed_by\": {{faker \"name.fullName\"}},\n    \"until\": {{faker \"date.soon\" 30}},\n  }\n}",
+          "body": "{\n  \"Permission\": {\n    \"id\": \"{{faker \"datatype.uuid\"}}\",\n    \"event_id\": {{body \"event_id\"}},\n    \"signed_by\": \"{{faker \"name.fullName\"}}\",\n    \"until\": \"{{faker \"date.soon\" 30}}\",\n  }\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "Normal response",
@@ -80,7 +80,7 @@
       "responses": [
         {
           "uuid": "1af89472-8ffb-4d08-96a2-a24477d4a842",
-          "body": "{\n  \"Provider\":{\n    \"id\": {{faker \"datatype.uuid\"}},\n    \"name\": {{faker \"company.name\"}},\n    \"test\": {{env \"USER\"}}\n  }\n}",
+          "body": "{\n  \"Provider\":{\n    \"id\": \"{{faker \"datatype.uuid\"}}\",\n    \"name\": \"{{faker \"company.name\"}}\",\n  }\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
